@@ -1,0 +1,233 @@
+body[data-album='liquid-reset'] { background: #07171f; }
+
+.liquid-site {
+  --liquid-ink: #07171f;
+  --liquid-paper: #ede7da;
+  --liquid-gold: #d8be91;
+  --liquid-muted: #9eafb3;
+  --text: #ede7da;
+  --muted: #b4c0c1;
+  --muted-2: #899b9f;
+  position: relative;
+  background: var(--liquid-ink);
+  color: var(--liquid-paper);
+  font-family: Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.liquid-site *, .liquid-site *::before, .liquid-site *::after { box-sizing: border-box; }
+.liquid-site a, .liquid-site button { -webkit-tap-highlight-color: transparent; }
+.liquid-site button { font: inherit; }
+.liquid-site a:focus-visible, .liquid-site button:focus-visible { outline: 2px solid var(--liquid-gold); outline-offset: 6px; }
+.liquid-site [id] { scroll-margin-top: 28px; }
+.liquid-frame { width: min(1280px, calc(100% - 112px)); margin-inline: auto; }
+
+.liquid-header {
+  position: absolute;
+  z-index: 30;
+  inset: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 30px 56px;
+  border-bottom: 1px solid rgba(237, 231, 218, 0.16);
+}
+
+.liquid-brand { display: inline-flex; align-items: center; gap: 11px; font-size: 0.83rem; font-weight: 500; letter-spacing: -0.02em; white-space: nowrap; }
+.liquid-brand svg { color: var(--liquid-gold); flex-shrink: 0; }
+.liquid-navigation { display: flex; align-items: center; gap: 32px; margin-inline: auto; }
+.liquid-navigation a { color: #d9e0dd; font-size: 0.72rem; transition: color 0.2s; }
+.liquid-navigation a:hover { color: #fff7e5; }
+.liquid-header-listen { display: flex; align-items: center; gap: 10px; padding: 10px 0 10px 24px; border-left: 1px solid rgba(237, 231, 218, 0.22); font-size: 0.72rem; }
+.liquid-menu-toggle { display: none; color: var(--liquid-paper); background: transparent; border: 0; padding: 10px; }
+
+.liquid-hero { position: relative; min-height: min(960px, 100svh); background: #132b3b; isolation: isolate; }
+.liquid-hero-image { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 52%; }
+.liquid-hero-shade { position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg, rgba(4, 18, 28, 0.72), rgba(7, 23, 31, 0.12) 68%), linear-gradient(0deg, #07171f 0%, rgba(7, 23, 31, 0.3) 22%, transparent 60%, rgba(5, 18, 28, 0.28)); }
+.liquid-hero-inner { display: flex; flex-direction: column; min-height: inherit; padding-top: 120px; }
+.liquid-album-switch { display: flex; align-items: center; gap: 22px; }
+.liquid-album-switch a { padding: 8px 0; color: #bdcbd0; font-size: 0.65rem; letter-spacing: 0.035em; border-bottom: 1px solid transparent; }
+.liquid-album-switch a[aria-current='page'] { color: var(--liquid-paper); border-bottom-color: var(--liquid-gold); }
+.liquid-hero-copy { padding: clamp(54px, 8vh, 100px) 0 60px; }
+.liquid-kicker { display: flex; align-items: center; gap: 12px; margin: 0 0 25px; color: var(--liquid-gold); font-size: 0.6rem; font-weight: 500; line-height: 1.8; letter-spacing: 0.2em; text-transform: uppercase; }
+.liquid-kicker > span:first-child { width: 5px; height: 5px; border-radius: 50%; background: var(--liquid-gold); }
+.liquid-kicker .liquid-kicker-divider { padding-inline: 4px; color: #a8b8bf; }
+.liquid-hero h1 { margin: 0 0 30px; font: 400 clamp(6rem, 11.7vw, 11.5rem)/0.87 Georgia, 'Times New Roman', serif; letter-spacing: -0.075em; }
+.liquid-hero h1 > span, .liquid-hero h1 > em { display: block; }
+.liquid-hero h1 > em { padding-left: 56px; color: #e8d9bd; font-weight: 400; }
+.liquid-hero-tagline { margin: 0 0 28px; color: #d6dedb; font: 400 1.02rem/1.8 Georgia, 'Times New Roman', serif; letter-spacing: 0.01em; }
+.liquid-button { display: inline-flex; align-items: center; justify-content: center; gap: 24px; min-height: 47px; padding: 0 20px; font-size: 0.7rem; font-weight: 500; transition: background 0.2s, gap 0.2s; }
+.liquid-button-light { color: #122831; background: var(--liquid-paper); }
+.liquid-button-light:hover { background: #fff6e4; gap: 34px; }
+.liquid-hero-bottom { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-top: auto; padding: 22px 0 32px; }
+.liquid-hero-bottom > span { color: #c8cec6; font: italic 0.92rem Georgia, 'Times New Roman', serif; }
+.liquid-hero-bottom a { display: inline-flex; align-items: center; gap: 16px; color: #d0d6d2; font-size: 0.6rem; }
+
+.liquid-story { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 7vw, 110px); align-items: center; padding-block: 125px; }
+.liquid-site h2 { margin: 0; font: 400 clamp(3rem, 5.2vw, 5rem)/1.08 Georgia, 'Times New Roman', serif; letter-spacing: -0.055em; }
+.liquid-site h2 em { color: var(--liquid-gold); font-weight: 400; }
+.liquid-story-lead { margin: 35px 0 22px; font: 400 1.3rem/1.6 Georgia, 'Times New Roman', serif; color: #d6dbd3; }
+.liquid-story-copy > p:not(.liquid-kicker):not(.liquid-story-lead) { max-width: 390px; margin: 0 0 18px; color: var(--liquid-muted); font-size: 0.8rem; line-height: 1.95; }
+.liquid-text-link { display: inline-flex; align-items: center; gap: 36px; padding: 12px 0; margin-top: 12px; border-bottom: 1px solid #52605d; font-size: 0.75rem; color: var(--liquid-gold); }
+.liquid-album-art { margin: 0; }
+.liquid-album-art img { display: block; width: 100%; height: auto; border: 1px solid rgba(216, 190, 145, 0.2); box-shadow: 0 22px 70px rgba(0, 0, 0, 0.2); }
+.liquid-album-art figcaption { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 17px; font-size: 0.6rem; color: var(--liquid-muted); }
+.liquid-album-art figcaption > span:first-child { color: var(--liquid-gold); }
+
+.liquid-music { padding-block: 110px; background: var(--liquid-paper); color: #152a31; }
+.liquid-section-heading { display: flex; align-items: end; justify-content: space-between; gap: 35px; margin-bottom: 48px; }
+.liquid-section-heading > p { flex-shrink: 0; margin: 0 0 5px; font-size: 0.75rem; line-height: 1.85; color: var(--liquid-muted); }
+.liquid-music .liquid-kicker { color: #6a6351; }
+.liquid-music h2 em { color: #7b7059; }
+.liquid-music .liquid-section-heading > p { color: #626c6a; }
+.liquid-songs { display: grid; grid-template-columns: 1fr 1fr; gap: 42px; }
+.liquid-song { min-width: 0; }
+.liquid-song-image { position: relative; aspect-ratio: 1.12; overflow: hidden; background: #1c2728; }
+.liquid-song-art-link { display: block; width: 100%; height: 100%; }
+.liquid-song-art-link > img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 23%; transition: transform 0.8s ease; }
+.liquid-song:hover .liquid-song-art-link > img { transform: scale(1.025); }
+.liquid-song-image::after { content: ''; position: absolute; inset: 60% 0 0; pointer-events: none; background: linear-gradient(transparent, rgba(0, 0, 0, 0.45)); }
+.liquid-song-number { position: absolute; z-index: 1; left: 22px; bottom: 24px; color: #eee7d7; font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; pointer-events: none; }
+.liquid-art-play { position: absolute; z-index: 2; bottom: 18px; right: 20px; display: grid; place-items: center; width: 51px; height: 51px; border: 1px solid rgba(237, 231, 218, 0.6); border-radius: 50%; background: rgba(237, 231, 218, 0.88); color: #172626; backdrop-filter: blur(12px); transition: background 0.2s; }
+.liquid-art-play:hover { background: #fff6e5; }
+.liquid-song-caption { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 22px 0 20px; }
+.liquid-song-caption p { margin: 0 0 8px; color: #737665; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; }
+.liquid-song-caption h3 { margin: 0; font: 400 clamp(1.8rem, 2.6vw, 2.7rem)/1.15 Georgia, 'Times New Roman', serif; letter-spacing: -0.045em; }
+.liquid-song-caption > svg { flex-shrink: 0; color: #8e8269; }
+.liquid-song-actions { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 16px; padding-top: 18px; border-top: 1px solid #c9c7b9; }
+.liquid-song-actions a, .liquid-song-actions button { display: inline-flex; align-items: center; gap: 14px; padding: 6px 0; font-size: 0.68rem; }
+.liquid-song-actions button { border: 0; color: #182e35; background: transparent; }
+.liquid-song-actions a { color: #56635f; }
+.liquid-song-actions .liquid-lyrics-link { color: #142d36; font-weight: 600; }
+.liquid-song-caption h3 a:hover { color: #7b7059; }
+.liquid-inline-player:not([hidden]) { margin-top: 20px; }
+.liquid-inline-player iframe { display: block; width: 100%; border: 0; border-radius: 12px; background: #182d32; }
+.liquid-music a:focus-visible, .liquid-music button:focus-visible { outline-color: #716141; }
+
+.liquid-visuals { padding-top: 120px; }
+.liquid-gallery { display: grid; grid-template-columns: 1.22fr 0.9fr 0.9fr; align-items: start; gap: 30px; }
+.liquid-gallery figure { min-width: 0; margin: 0; }
+.liquid-gallery figure:nth-child(2) { padding-top: 65px; }
+.liquid-gallery figure:nth-child(3) { padding-top: 25px; }
+.liquid-gallery button { position: relative; display: block; width: 100%; aspect-ratio: 0.9; padding: 0; overflow: hidden; border: 0; background: #10252f; }
+.liquid-gallery figure:first-child button { aspect-ratio: 1; }
+.liquid-gallery img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+.liquid-gallery figure:first-child img { object-position: 58% center; }
+.liquid-gallery button > span { position: absolute; bottom: 16px; right: 16px; display: grid; place-items: center; width: 38px; height: 38px; border: 1px solid #d9d1bf80; border-radius: 50%; color: #eee7da; background: #0b1c2180; backdrop-filter: blur(10px); }
+.liquid-gallery button:hover img { transform: scale(1.035); }
+.liquid-gallery figcaption { padding-top: 18px; }
+.liquid-gallery figcaption strong { display: block; margin-bottom: 8px; font: 400 1.4rem Georgia, 'Times New Roman', serif; letter-spacing: -0.03em; }
+.liquid-gallery figcaption > span { display: block; color: var(--liquid-muted); font-size: 0.56rem; line-height: 1.8; }
+.liquid-closing-quote { display: flex; flex-direction: column; align-items: center; gap: 28px; padding: 130px 0; text-align: center; }
+.liquid-closing-quote > svg { color: var(--liquid-gold); }
+.liquid-closing-quote blockquote { margin: 0; font: 400 clamp(1.8rem, 3.5vw, 3.1rem)/1.4 Georgia, 'Times New Roman', serif; letter-spacing: -0.04em; text-wrap: balance; }
+.liquid-closing-quote em { color: var(--liquid-gold); }
+.liquid-closing-quote > span { color: var(--liquid-muted); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.17em; }
+
+.liquid-footer { border-top: 1px solid #394c50; background: #0b1e26; }
+.liquid-footer-top { display: flex; align-items: end; justify-content: space-between; gap: 40px; padding: 80px 0; }
+.liquid-footer h2 { font-size: clamp(2.5rem, 4.1vw, 4rem); }
+.liquid-socials { width: min(100%, 270px); }
+.liquid-socials a { display: flex; align-items: center; justify-content: space-between; gap: 26px; padding: 18px 0; border-bottom: 1px solid #3b4e50; font-size: 0.75rem; }
+.liquid-socials a:hover { color: var(--liquid-gold); }
+.liquid-footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 25px 0; border-top: 1px solid #2d4146; }
+.liquid-footer-bottom > span { color: var(--liquid-muted); font-size: 0.58rem; }
+.liquid-footer-bottom > a:last-child { display: inline-flex; align-items: center; gap: 12px; color: var(--liquid-gold); font-size: 0.6rem; }
+
+.liquid-lightbox { position: fixed; width: min(1100px, calc(100% - 32px)); max-height: calc(100svh - 32px); margin: auto; padding: 0; overflow: auto; border: 1px solid #74827a; color: #ede7da; background: #091a21; }
+.liquid-lightbox::backdrop { background: #030c12ed; backdrop-filter: blur(12px); }
+.liquid-lightbox-inner { position: relative; padding: 42px 16px 10px; }
+.liquid-lightbox-inner > img { display: block; width: 100%; max-height: calc(100svh - 160px); object-fit: contain; }
+.liquid-lightbox-close { position: absolute; top: 4px; right: 8px; display: grid; place-items: center; width: 36px; height: 36px; padding: 0; border: 0; background: transparent; color: #ede7da; }
+.liquid-lightbox-controls { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 10px 0 0; }
+.liquid-lightbox-controls > button { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid #425759; border-radius: 50%; color: var(--liquid-gold); background: transparent; }
+.liquid-lightbox-controls p { margin: 0; text-align: center; font: 1.15rem Georgia, 'Times New Roman', serif; }
+.liquid-lightbox-controls p span { display: block; margin-top: 7px; color: var(--liquid-muted); font: 0.6rem Inter, sans-serif; }
+.liquid-track-content { padding-top: 125px; }
+.liquid-track-content .listening-room { --song-accent: #d8be91 !important; }
+.liquid-track-content .room-player { background: #0d222b; }
+.liquid-track-content .room-verse p { color: #d3dbd2; }
+.liquid-track-content .room-chorus p { color: #d8be91; }
+.liquid-song-page { background: radial-gradient(ellipse at 80% 12%, #28495855, transparent 55rem), #07171f; }
+.liquid-track-content .room-heading h1 { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; letter-spacing: -0.055em; }
+.liquid-track-content .room-lyrics h2 { font: 600 2rem Inter, system-ui, sans-serif; letter-spacing: -0.06em; }
+.liquid-track-content .room-artwork > img { object-position: center 23%; }
+
+@media (min-width: 1600px) {
+  .liquid-header { padding-inline: max(56px, calc((100% - 1280px) / 2)); }
+}
+
+@media (max-width: 1000px) {
+  .liquid-frame { width: calc(100% - 72px); }
+  .liquid-header { padding-inline: 36px; gap: 22px; }
+  .liquid-navigation { gap: 22px; }
+  .liquid-hero { min-height: 820px; }
+  .liquid-hero h1 { font-size: 8rem; }
+  .liquid-hero-copy { padding-top: 90px; }
+  .liquid-story { gap: 45px; padding-block: 90px; }
+  .liquid-songs { gap: 28px; }
+  .liquid-section-heading > p { flex-shrink: 1; }
+  .liquid-gallery { gap: 22px; }
+  .liquid-gallery figcaption > span { font-size: 0.6rem; }
+}
+
+@media (max-width: 720px) {
+  .liquid-frame { width: calc(100% - 44px); }
+  .liquid-header { padding: 20px 22px; gap: 17px; }
+  .liquid-header-listen { margin-left: auto; padding-left: 16px; }
+  .liquid-menu-toggle { display: grid; place-items: center; margin-right: -10px; }
+  .liquid-navigation { display: none; }
+  .liquid-navigation.is-open { position: absolute; top: 100%; left: 0; right: 0; display: flex; align-items: stretch; flex-direction: column; gap: 0; padding: 15px 22px; background: #0a1c25fa; border-bottom: 1px solid #41555b; backdrop-filter: blur(20px); }
+  .liquid-navigation a { padding: 16px 0; font-size: 0.85rem; }
+  .liquid-brand { font-size: 0.76rem; gap: 8px; }
+  .liquid-hero { min-height: 870px; }
+  .liquid-hero-image { object-position: 57% center; }
+  .liquid-hero-shade { background: linear-gradient(0deg, #07171f 0%, #07171fbb 20%, #07171f44 52%, #07171f22 75%, #07171f77); }
+  .liquid-hero-inner { padding-top: 104px; }
+  .liquid-album-switch { gap: 23px; }
+  .liquid-hero-copy { padding: 235px 0 48px; }
+  .liquid-hero h1 { font-size: clamp(6rem, 20vw, 8rem); margin-bottom: 25px; }
+  .liquid-hero h1 > em { padding-left: 35px; }
+  .liquid-kicker { font-size: 0.56rem; letter-spacing: 0.16em; margin-bottom: 20px; }
+  .liquid-hero-tagline { font-size: 1rem; }
+  .liquid-hero-bottom { align-items: start; flex-direction: column; gap: 16px; padding-bottom: 28px; }
+  .liquid-hero-bottom > span { font-size: 0.85rem; }
+  .liquid-hero-bottom a { font-size: 0.62rem; }
+  .liquid-story { grid-template-columns: minmax(0, 1fr); gap: 45px; padding-block: 75px; }
+  .liquid-site h2 { font-size: clamp(2.9rem, 9vw, 4rem); }
+  .liquid-story-copy > p:not(.liquid-kicker):not(.liquid-story-lead) { font-size: 0.84rem; }
+  .liquid-album-art { width: min(100%, 500px); margin-inline: auto; }
+  .liquid-album-art figcaption { font-size: 0.61rem; }
+  .liquid-music { padding-block: 72px; }
+  .liquid-section-heading { align-items: start; flex-direction: column; gap: 25px; margin-bottom: 34px; }
+  .liquid-section-heading > p { font-size: 0.8rem; }
+  .liquid-songs { grid-template-columns: minmax(0, 1fr); gap: 52px; }
+  .liquid-song-image { aspect-ratio: 1; }
+  .liquid-song-caption h3 { font-size: 2.1rem; }
+  .liquid-song-actions a, .liquid-song-actions button { font-size: 0.76rem; }
+  .liquid-visuals { padding-top: 75px; }
+  .liquid-gallery { grid-template-columns: 1fr 1fr; gap: 30px 18px; }
+  .liquid-gallery figure:first-child { grid-column: 1 / -1; }
+  .liquid-gallery figure:first-child button { aspect-ratio: 1.3; }
+  .liquid-gallery figure:nth-child(2), .liquid-gallery figure:nth-child(3) { padding-top: 0; }
+  .liquid-gallery figcaption strong { font-size: 1.2rem; }
+  .liquid-gallery figcaption > span { font-size: 0.55rem; }
+  .liquid-gallery button > span { width: 32px; height: 32px; right: 10px; bottom: 10px; }
+  .liquid-closing-quote { padding: 75px 0; gap: 24px; }
+  .liquid-closing-quote blockquote { font-size: 1.85rem; }
+  .liquid-footer-top { align-items: start; flex-direction: column; padding-block: 60px 45px; gap: 30px; }
+  .liquid-socials { width: 100%; }
+  .liquid-footer-bottom { align-items: start; flex-direction: column; gap: 20px; padding-block: 26px; }
+  .liquid-track-content { padding-top: 106px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .liquid-site * { scroll-behavior: auto; transition: none !important; }
+}
+
+@media (max-width: 360px) {
+  .liquid-header { padding-inline: 18px; gap: 10px; }
+  .liquid-header-listen { padding-left: 12px; }
+  .liquid-header-listen > span { display: none; }
+  .liquid-gallery { column-gap: 12px; }
+}

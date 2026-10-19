@@ -199,6 +199,60 @@ button {
   padding: 54px 0 34px;
 }
 
+.album-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.album-nav > span {
+  margin-right: 4px;
+  font-weight: 800;
+}
+
+.album-nav a {
+  padding: 10px 16px;
+  border: 1px solid var(--panel-strong);
+  border-radius: 999px;
+  background: var(--panel);
+}
+
+.album-nav a:hover,
+.album-nav a[aria-current='page'] {
+  color: var(--text);
+  border-color: var(--cyan);
+  background: rgba(125, 231, 255, 0.12);
+}
+
+.album-nav a:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 4px;
+}
+
+.album-cover-placeholder {
+  display: flex;
+  min-height: inherit;
+  padding: 80px 24px 340px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  color: var(--cyan);
+  background: radial-gradient(ellipse at 30% 20%, rgba(125, 231, 255, 0.25), transparent 65%);
+}
+
+.album-empty-state {
+  padding: 24px;
+  color: var(--muted);
+  border: 1px solid var(--panel-strong);
+  border-radius: var(--radius-lg);
+  background: var(--panel);
+}
+
 .hero-copy {
   position: relative;
 }
@@ -606,6 +660,14 @@ button {
   color: #09051a;
   background: var(--cyan);
 }
+
+.track-actions a.track-lyrics-link {
+  color: #09051a;
+  background: linear-gradient(135deg, var(--cyan), #e3d7ff);
+}
+
+.track-card h3 a:hover { color: var(--cyan); }
+.track-card a:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
 
 .video-grid {
   display: grid;

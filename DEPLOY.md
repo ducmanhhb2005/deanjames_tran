@@ -18,11 +18,13 @@ Create a new **Web Service** and connect your GitHub repo.
 Settings:
 
 ```txt
-Root Directory: server
+Root Directory: (leave empty; use the repository root)
 Runtime: Node
-Build Command: npm install
-Start Command: npm start
+Build Command: npm ci --omit=dev --workspace server
+Start Command: npm start --workspace server
 ```
+
+For an existing service, clear the previous `server` Root Directory before deploying these changes. The API reads `lyrics.md`, `lyrics_liquid_reset.md`, and `shared/` from the repository root. Render excludes files outside a configured service root; see [Render monorepo support](https://render.com/docs/monorepo-support).
 
 Environment variables:
 
@@ -51,6 +53,12 @@ Install Command: npm install
 Build Command: npm run build
 Output Directory: dist
 ```
+
+Keep `client/vercel.json` in the frontend project. Its rewrite serves the app when opening or refreshing `/albums/young-universe` and `/albums/liquid-reset` directly.
+
+It also rewrites `/albums/:albumId/tracks/:trackId` for individual song pages. Keep both root lyric sheets (`lyrics.md` and `lyrics_liquid_reset.md`) and the `shared/` directory in the repository: both the frontend build and backend load the album content from them. The site root `/` opens Liquid Reset.
+
+In Vercel project settings, enable **Include source files outside of the Root Directory in the Build Step** under **Root Directory**, so the frontend can import these shared files. See [Vercel monorepo FAQ](https://vercel.com/docs/monorepos/monorepo-faq).
 
 Environment variable:
 

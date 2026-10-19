@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/albums/:albumId", "destination": "/index.html" },
+    { "source": "/albums/:albumId/tracks/:trackId", "destination": "/index.html" }
+  ]
+}

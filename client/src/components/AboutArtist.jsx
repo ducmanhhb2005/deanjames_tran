@@ -9,7 +9,7 @@ const features = [
   {
     icon: Orbit,
     title: 'Album-first storytelling',
-    text: 'Each track becomes a planet in the Young Universe constellation.'
+    text: 'Each track becomes a planet in this album’s constellation.'
   },
   {
     icon: Rocket,
@@ -23,8 +23,8 @@ export function AboutArtist({ artist, album }) {
     <section className="section about-grid" id="about">
       <div className="section-kicker">mission log</div>
       <div className="about-copy">
-        <h2>Dreamy, dramatic, and built for night-listening.</h2>
-        <p>{artist.bio}</p>
+        <h2>{album.id === 'young-universe' ? 'Dreamy, dramatic, and built for night-listening.' : album.title}</h2>
+        <p>{album.bio || (album.id === 'young-universe' ? artist.bio : `Explore ${album.title} by ${artist.name}.`)}</p>
       </div>
 
       <div className="feature-grid">
@@ -37,10 +37,12 @@ export function AboutArtist({ artist, album }) {
         ))}
       </div>
 
-      <div className="quote-panel">
-        <p>“{album.description}”</p>
-        <span>{album.title} · {album.era}</span>
-      </div>
+      {album.description && (
+        <div className="quote-panel">
+          <p>“{album.description}”</p>
+          <span>{album.title}{album.era && ` · ${album.era}`}</span>
+        </div>
+      )}
     </section>
   );
 }

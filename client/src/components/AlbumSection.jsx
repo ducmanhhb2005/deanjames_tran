@@ -1,24 +1,8 @@
-import { useMemo, useState } from 'react';
-import { ExternalLink, Pause, Play, Sparkle } from 'lucide-react';
-
-function getEmbedUrl(track) {
-  if (!track.youtubeId) {
-    return null;
-  }
-
-  return `https://www.youtube.com/embed/${track.youtubeId}`;
-}
+﻿import { ArrowUpRight, BookOpenText, ExternalLink, Headphones, Sparkle } from 'lucide-react';
+import { trackPath } from '../utils/albumRouting.js';
 
 export function AlbumSection({ album }) {
-  const [activeTrackId, setActiveTrackId] = useState(null);
   const tracks = album.tracks || [];
-
-  const activeTrack = useMemo(
-    () => tracks.find((track) => track.id === activeTrackId || `${track.order}-${track.title}` === activeTrackId),
-    [tracks, activeTrackId]
-  );
-
-  const activeEmbed = getEmbedUrl(activeTrack || {});
 
   return (
     <section className="section album-section" id="album">
@@ -28,53 +12,25 @@ export function AlbumSection({ album }) {
           <h2>{album.title}</h2>
           <p>{album.description}</p>
         </div>
-        <span className="track-count">{tracks.length} tracks</span>
+        {tracks.length > 0 && <span className="track-count">{tracks.length} {album.status === 'Unreleased' ? 'tracks listed' : 'tracks'}</span>}
       </div>
 
-      {activeEmbed && (
-        <div className="video-stage">
-          <iframe
-            src={activeEmbed}
-            title={`Playing ${activeTrack.title}`}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          />
-          <div>
-            <span>Now orbiting</span>
-            <strong>{activeTrack.title}</strong>
-          </div>
-        </div>
-      )}
+      {tracks.length === 0 && <p className="album-empty-state">The tracklist for {album.title} has not been added yet.</p>}
 
       <div className="track-grid">
         {tracks.map((track) => {
-          const trackKey = track.id || `${track.order}-${track.title}`;
-          const isActive = activeTrackId === trackKey;
-          const canPlay = Boolean(track.youtubeId);
-          const link = track.youtubeUrl || track.spotifyUrl;
-
+          const hasLyrics = Boolean(track.lyrics?.length);
+          const href = hasLyrics ? trackPath(album.id, track.id) : track.youtubeUrl || track.spotifyUrl;
           return (
-            <article className={isActive ? 'track-card active' : 'track-card'} key={trackKey}>
+            <article className="track-card" key={track.id || track.order}>
               <div className="track-number">{String(track.order).padStart(2, '0')}</div>
               <div className="track-body">
-                <span className="track-mood">
-                  <Sparkle size={13} />
-                  {track.mood}
-                </span>
-                <h3>{track.title}</h3>
+                <span className="track-mood"><Sparkle size={13} />{track.mood}</span>
+                <h3>{href ? <a href={href} target={hasLyrics ? undefined : '_blank'} rel={hasLyrics ? undefined : 'noreferrer'}>{track.title}</a> : track.title}</h3>
                 <div className="track-actions">
-                  {canPlay && (
-                    <button type="button" onClick={() => setActiveTrackId(isActive ? null : trackKey)}>
-                      {isActive ? <Pause size={16} /> : <Play size={16} fill="currentColor" />}
-                      {isActive ? 'Close' : 'Play'}
-                    </button>
-                  )}
-                  {link && (
-                    <a href={link} target="_blank" rel="noreferrer">
-                      <ExternalLink size={15} />
-                      Open
-                    </a>
-                  )}
+                  {hasLyrics && <a className="track-lyrics-link" href={href} aria-label={'Listen and read lyrics: ' + track.title}><BookOpenText size={16} />Listen & lyrics<ArrowUpRight size={14} /></a>}
+                  {track.youtubeUrl && <a href={track.youtubeUrl} target="_blank" rel="noreferrer"><ExternalLink size={15} />YouTube</a>}
+                  {track.spotifyUrl && <a href={track.spotifyUrl} target="_blank" rel="noreferrer"><Headphones size={15} />Spotify</a>}
                 </div>
               </div>
             </article>

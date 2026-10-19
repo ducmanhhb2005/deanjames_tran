@@ -1,4 +1,5 @@
 import { ArrowUpRight, Youtube } from 'lucide-react';
+import { trackPath } from '../utils/albumRouting.js';
 
 export function YouTubeSection({ artist, album }) {
   const featured = (album.tracks || []).filter((track) => track.youtubeId).slice(0, 3);
@@ -16,15 +17,17 @@ export function YouTubeSection({ artist, album }) {
         </a>
       </div>
 
+      {featured.length === 0 && <p className="album-empty-state">Videos for {album.title} have not been added yet.</p>}
+
       <div className="video-grid">
         {featured.map((track) => (
-          <a className="video-tile" key={track.youtubeId} href={track.youtubeUrl} target="_blank" rel="noreferrer">
+          <a className="video-tile" key={track.youtubeId} href={track.lyrics?.length ? trackPath(album.id, track.id) : track.youtubeUrl} target={track.lyrics?.length ? undefined : '_blank'} rel={track.lyrics?.length ? undefined : 'noreferrer'}>
             <img src={`https://img.youtube.com/vi/${track.youtubeId}/hqdefault.jpg`} alt={`${track.title} thumbnail`} />
             <div>
-              <span>Watch track {String(track.order).padStart(2, '0')}</span>
+              <span>Listen to track {String(track.order).padStart(2, '0')}</span>
               <h3>{track.title}</h3>
               <p>
-                Launch video <ArrowUpRight size={14} />
+                {track.lyrics?.length ? 'Listen & read lyrics' : 'Launch video'} <ArrowUpRight size={14} />
               </p>
             </div>
           </a>

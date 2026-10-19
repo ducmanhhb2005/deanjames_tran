@@ -1,11 +1,11 @@
 import { Disc3, Github, Youtube } from 'lucide-react';
 
-export function Footer({ artist }) {
+export function Footer({ artist, album }) {
   return (
     <footer className="footer">
       <div>
         <strong>{artist.name}</strong>
-        <span>Young Universe website concept · React / Express</span>
+        <span>{album.title} · {artist.name}</span>
       </div>
       <nav aria-label="Footer links">
         <a href={artist.spotifyUrl} target="_blank" rel="noreferrer">
